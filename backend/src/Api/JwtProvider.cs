@@ -2,7 +2,6 @@
 using Core.Abstractions;
 using Data.Entities;
 using Microsoft.AspNetCore.Identity;
-//using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -52,7 +51,7 @@ namespace Api
                 signingCredentials);
 
             string tokenValue = new JwtSecurityTokenHandler().WriteToken(token);
-            return (tokenValue, tokenExpiryDate);
+            return await System.Threading.Tasks.Task.FromResult((tokenValue, tokenExpiryDate));
         }
     }
 }
