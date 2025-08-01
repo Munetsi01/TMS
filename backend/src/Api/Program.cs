@@ -95,6 +95,14 @@ namespace Api
             //register automapper
             builder.Services.AddAutoMapper(configAction => configAction.AddProfile(typeof(ApplicationMappingProfile)));
 
+            // Add Cors
+            builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.WithOrigins("http://localhost:3000")
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
+
             var app = builder.Build();
 
             //creates the database and the tables using the added migrations
@@ -110,6 +118,8 @@ namespace Api
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
+
+            app.UseCors("MyPolicy");
 
             app.UseHttpsRedirection();
 
