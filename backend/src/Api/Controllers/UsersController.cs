@@ -46,7 +46,7 @@ namespace Api.Controllers
             }
         }
 
-        [AllowAnonymous]//only for authorized
+        [Authorize]
         [Route("users")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ListUsersResponse))]

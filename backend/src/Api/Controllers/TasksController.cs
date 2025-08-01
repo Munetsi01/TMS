@@ -11,7 +11,7 @@ namespace Api.Controllers
     [Route("api")]
     public class TasksController : Controller
     {
-        [AllowAnonymous]//only for authorized
+        [Authorize]
         [Route("tasks")]
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ListTasksResponse))]
@@ -36,7 +36,7 @@ namespace Api.Controllers
             }
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [Route("tasks")]
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CreateTaskResponse))]
@@ -59,7 +59,7 @@ namespace Api.Controllers
             }
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [Route("tasks/{id}")]
         [HttpDelete]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(DeleteTaskResponse))]
@@ -85,7 +85,7 @@ namespace Api.Controllers
             }
         }
 
-        [AllowAnonymous]
+        [Authorize]
         [Route("tasks/{id}")]
         [HttpPut]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UpdateTaskResponse))]
