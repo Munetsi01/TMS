@@ -84,5 +84,27 @@ namespace Api.Controllers
                 return StatusCode(ex.ErrorResponse!.StatusCode, ex.ErrorResponse);
             }
         }
+
+        [AllowAnonymous]
+        [Route("tasks/{id}")]
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UpdateTaskResponse))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorResponse))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(ErrorResponse))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(ErrorResponse))]
+        [ProducesResponseType(StatusCodes.Status403Forbidden, Type = typeof(ErrorResponse))]
+        public async Task<ActionResult> UpdateTaskAsync([FromServices] IHandler<UpdateTaskRequest, UpdateTaskResponse> handler, [FromRoute]string id, [FromBody] UpdateTaskRequest request)
+        {
+            try
+            {
+                request.Id = id;
+                var response = await handler.Handle(request).ConfigureAwait(false);
+                return Ok(response);
+            }
+            catch (BusinessException ex)
+            {
+                return StatusCode(ex.ErrorResponse!.StatusCode, ex.ErrorResponse);
+            }
+        }
     }
 }
