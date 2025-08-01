@@ -47,8 +47,7 @@ namespace Api.Controllers
         {
             try
             {
-                //must be taken from the Loggedin User Token
-                request.CreatorId = "8cc6b6cd-fdb0-4d4d-ad1b-92e0c043294a";
+                request.CreatorId = User?.Claims?.FirstOrDefault(x => x.Type == "http://schemas.microsoft.com/identity/claims/objectidentifier")?.Value;
 
                 var response = await handler.Handle(request).ConfigureAwait(false);
                 return Ok(response);
