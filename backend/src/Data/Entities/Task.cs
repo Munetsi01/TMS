@@ -8,7 +8,7 @@ namespace Data.Entities
     public class Task
     {
         [Key]
-        public Guid Id { get; set; }
+        public string Id { get; set; }
 
         public string Title { get; set; }
 
@@ -19,10 +19,12 @@ namespace Data.Entities
         public TaskPriorityEnum Priority { get; set; }
 
         [ForeignKey("Assignee")]
-        public Guid AssigneeId { get; set; }
+        [Required]
+        public string AssigneeId { get; set; }
 
         [ForeignKey("Creator")]
-        public Guid CreatorId { get; set; }
+        [Required]
+        public string CreatorId { get; set; }
 
         public DateTime CreatedAt { get; set; }
 

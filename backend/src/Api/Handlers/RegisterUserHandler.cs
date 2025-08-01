@@ -46,7 +46,7 @@ namespace Api.Handlers
 
             var user = new User
             {
-                Id = Guid.NewGuid(),
+                Id = Guid.NewGuid().ToString(),
                 Username = request.Username,
                 Email = request.Email,
                 Password = Helper.CreateMD5(request.Password),

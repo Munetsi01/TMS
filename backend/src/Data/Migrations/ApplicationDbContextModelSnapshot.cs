@@ -24,18 +24,19 @@ namespace Data.Migrations
 
             modelBuilder.Entity("Data.Entities.Task", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
 
-                    b.Property<Guid>("AssigneeId")
-                        .HasColumnType("uuid");
+                    b.Property<string>("AssigneeId")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<Guid>("CreatorId")
-                        .HasColumnType("uuid");
+                    b.Property<string>("CreatorId")
+                        .IsRequired()
+                        .HasColumnType("text");
 
                     b.Property<string>("Description")
                         .HasColumnType("text");
@@ -63,23 +64,22 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("3e7f6a48-d7f8-4885-ab56-6b87d1762c3c"),
-                            AssigneeId = new Guid("b7d59537-694c-4101-abb8-44a43d6859fc"),
-                            CreatedAt = new DateTime(2025, 7, 31, 22, 11, 10, 440, DateTimeKind.Utc).AddTicks(3919),
-                            CreatorId = new Guid("9cc7070f-362a-44fa-b9a6-a4f93c942538"),
+                            Id = "ae077477-53e3-4c94-967d-a31e086146e2",
+                            AssigneeId = "8cc6b6cd-fdb0-4d4d-ad1b-92e0c043294a",
+                            CreatedAt = new DateTime(2025, 8, 1, 7, 23, 33, 504, DateTimeKind.Utc).AddTicks(4668),
+                            CreatorId = "2316cedf-bb9c-4c33-9840-e1090071c9ca",
                             Description = "NOTE: Do not use AI tools to write the code. The code will be screened thoroughly. Use DotNet for Backend and React for Frontend",
                             Priority = 2,
                             Status = 1,
                             Title = "React DotNet - Coding Assignment - Medlogix",
-                            UpdatedAt = new DateTime(2025, 7, 31, 22, 11, 10, 440, DateTimeKind.Utc).AddTicks(3920)
+                            UpdatedAt = new DateTime(2025, 8, 1, 7, 23, 33, 504, DateTimeKind.Utc).AddTicks(4669)
                         });
                 });
 
             modelBuilder.Entity("Data.Entities.User", b =>
                 {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                    b.Property<string>("Id")
+                        .HasColumnType("text");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("timestamp with time zone");
@@ -106,8 +106,8 @@ namespace Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("b7d59537-694c-4101-abb8-44a43d6859fc"),
-                            CreatedAt = new DateTime(2025, 7, 31, 22, 11, 10, 440, DateTimeKind.Utc).AddTicks(3812),
+                            Id = "8cc6b6cd-fdb0-4d4d-ad1b-92e0c043294a",
+                            CreatedAt = new DateTime(2025, 8, 1, 7, 23, 33, 504, DateTimeKind.Utc).AddTicks(4490),
                             Email = "munetsilazzie@gmail.com",
                             Password = "87152AB405DB64027D236F03EE80D736",
                             Role = 1,
@@ -115,8 +115,8 @@ namespace Data.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9cc7070f-362a-44fa-b9a6-a4f93c942538"),
-                            CreatedAt = new DateTime(2025, 7, 31, 22, 11, 10, 440, DateTimeKind.Utc).AddTicks(3837),
+                            Id = "2316cedf-bb9c-4c33-9840-e1090071c9ca",
+                            CreatedAt = new DateTime(2025, 8, 1, 7, 23, 33, 504, DateTimeKind.Utc).AddTicks(4523),
                             Email = "alok.kumar@smoothstack.com",
                             Password = "16B989E3420BE5F0EC9F1276DC3CE772",
                             Role = 1,

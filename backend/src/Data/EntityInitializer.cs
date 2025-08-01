@@ -12,7 +12,7 @@ namespace Data
             {
                 new User
                 {
-                    Id = Guid.NewGuid(),
+                    Id = Guid.NewGuid().ToString(),
                     Username = "lazzie",
                     Email = "munetsilazzie@gmail.com",
                     Password = Helper.CreateMD5("T5#t0Gg12#"),
@@ -21,7 +21,7 @@ namespace Data
                 },
                 new User
                 {
-                    Id = Guid.NewGuid(),
+                    Id = Guid.NewGuid().ToString(),
                     Username = "alok",
                     Email = "alok.kumar@smoothstack.com",
                     Password = Helper.CreateMD5("T2as78$kPy"),
@@ -32,13 +32,13 @@ namespace Data
             return list;
         }
 
-        public static List<Data.Entities.Task> InitializeTasks(Guid creatorId, Guid assigneeId)
+        public static List<Data.Entities.Task> InitializeTasks(string creatorId, string assigneeId)
         {
             var list = new List<Data.Entities.Task>
             {
                 new Data.Entities.Task
                 {
-                    Id = Guid.NewGuid(),
+                    Id = Guid.NewGuid().ToString(),
                     Title = "React DotNet - Coding Assignment - Medlogix",
                     Description = "NOTE: Do not use AI tools to write the code. The code will be screened thoroughly. Use DotNet for Backend and React for Frontend",
                     Status = TaskStatusEnum.IN_PROGRESS,

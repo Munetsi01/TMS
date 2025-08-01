@@ -49,7 +49,7 @@ namespace Api.Controllers
         [AllowAnonymous]//only for authorized
         [Route("users")]
         [HttpGet]
-        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(RegisterUserResponse))]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(ListUsersResponse))]
         [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(ErrorResponse))]
         [ProducesResponseType(StatusCodes.Status401Unauthorized, Type = typeof(ErrorResponse))]
         [ProducesResponseType(StatusCodes.Status403Forbidden, Type = typeof(ErrorResponse))]

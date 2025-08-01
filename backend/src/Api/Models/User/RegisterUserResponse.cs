@@ -2,6 +2,6 @@
 {
     public class RegisterUserResponse : IResponse
     {
-        public Guid UserId { get; set; }  
+        public string UserId { get; set; }  
     }
 }

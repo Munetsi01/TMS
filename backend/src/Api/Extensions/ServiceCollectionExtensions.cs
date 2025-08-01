@@ -1,4 +1,5 @@
 ﻿using Api.Handlers;
+using Api.Models.Task;
 using Api.Models.User;
 using Api.Validators;
 using Core.Abstractions;
@@ -31,6 +32,9 @@ namespace Api.Extensions
 
             services.AddScoped<IValidator<ListUsersRequest>, ListUsersRequestValidator>();
             services.AddScoped<IHandler<ListUsersRequest, ListUsersResponse>, ListUsersHandler>();
+
+            services.AddScoped<IValidator<ListTasksRequest>, ListTasksRequestValidator>();
+            services.AddScoped<IHandler<ListTasksRequest, ListTasksResponse>, ListTasksHandler>();
         }
     }
 }

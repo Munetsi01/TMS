@@ -17,7 +17,7 @@ namespace Data.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Id = table.Column<string>(type: "text", nullable: false),
                     Username = table.Column<string>(type: "text", nullable: true),
                     Email = table.Column<string>(type: "text", nullable: true),
                     Password = table.Column<string>(type: "text", nullable: true),
@@ -33,13 +33,13 @@ namespace Data.Migrations
                 name: "Tasks",
                 columns: table => new
                 {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
+                    Id = table.Column<string>(type: "text", nullable: false),
                     Title = table.Column<string>(type: "text", nullable: true),
                     Description = table.Column<string>(type: "text", nullable: true),
                     Status = table.Column<int>(type: "integer", nullable: false),
                     Priority = table.Column<int>(type: "integer", nullable: false),
-                    AssigneeId = table.Column<Guid>(type: "uuid", nullable: false),
-                    CreatorId = table.Column<Guid>(type: "uuid", nullable: false),
+                    AssigneeId = table.Column<string>(type: "text", nullable: false),
+                    CreatorId = table.Column<string>(type: "text", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
@@ -65,14 +65,14 @@ namespace Data.Migrations
                 columns: new[] { "Id", "CreatedAt", "Email", "Password", "Role", "Username" },
                 values: new object[,]
                 {
-                    { new Guid("9cc7070f-362a-44fa-b9a6-a4f93c942538"), new DateTime(2025, 7, 31, 22, 11, 10, 440, DateTimeKind.Utc).AddTicks(3837), "alok.kumar@smoothstack.com", "16B989E3420BE5F0EC9F1276DC3CE772", 1, "alok" },
-                    { new Guid("b7d59537-694c-4101-abb8-44a43d6859fc"), new DateTime(2025, 7, 31, 22, 11, 10, 440, DateTimeKind.Utc).AddTicks(3812), "munetsilazzie@gmail.com", "87152AB405DB64027D236F03EE80D736", 1, "lazzie" }
+                    { "2316cedf-bb9c-4c33-9840-e1090071c9ca", new DateTime(2025, 8, 1, 7, 23, 33, 504, DateTimeKind.Utc).AddTicks(4523), "alok.kumar@smoothstack.com", "16B989E3420BE5F0EC9F1276DC3CE772", 1, "alok" },
+                    { "8cc6b6cd-fdb0-4d4d-ad1b-92e0c043294a", new DateTime(2025, 8, 1, 7, 23, 33, 504, DateTimeKind.Utc).AddTicks(4490), "munetsilazzie@gmail.com", "87152AB405DB64027D236F03EE80D736", 1, "lazzie" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Tasks",
                 columns: new[] { "Id", "AssigneeId", "CreatedAt", "CreatorId", "Description", "Priority", "Status", "Title", "UpdatedAt" },
-                values: new object[] { new Guid("3e7f6a48-d7f8-4885-ab56-6b87d1762c3c"), new Guid("b7d59537-694c-4101-abb8-44a43d6859fc"), new DateTime(2025, 7, 31, 22, 11, 10, 440, DateTimeKind.Utc).AddTicks(3919), new Guid("9cc7070f-362a-44fa-b9a6-a4f93c942538"), "NOTE: Do not use AI tools to write the code. The code will be screened thoroughly. Use DotNet for Backend and React for Frontend", 2, 1, "React DotNet - Coding Assignment - Medlogix", new DateTime(2025, 7, 31, 22, 11, 10, 440, DateTimeKind.Utc).AddTicks(3920) });
+                values: new object[] { "ae077477-53e3-4c94-967d-a31e086146e2", "8cc6b6cd-fdb0-4d4d-ad1b-92e0c043294a", new DateTime(2025, 8, 1, 7, 23, 33, 504, DateTimeKind.Utc).AddTicks(4668), "2316cedf-bb9c-4c33-9840-e1090071c9ca", "NOTE: Do not use AI tools to write the code. The code will be screened thoroughly. Use DotNet for Backend and React for Frontend", 2, 1, "React DotNet - Coding Assignment - Medlogix", new DateTime(2025, 8, 1, 7, 23, 33, 504, DateTimeKind.Utc).AddTicks(4669) });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Tasks_AssigneeId",
