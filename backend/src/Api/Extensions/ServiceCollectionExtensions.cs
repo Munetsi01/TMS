@@ -38,6 +38,9 @@ namespace Api.Extensions
 
             services.AddScoped<IValidator<CreateTaskRequest>, CreateTaskRequestValidator>();
             services.AddScoped<IHandler<CreateTaskRequest, CreateTaskResponse>, CreateTaskHandler>();
+
+            services.AddScoped<IValidator<DeleteTaskRequest>, DeleteTaskRequestValidator>();
+            services.AddScoped<IHandler<DeleteTaskRequest, DeleteTaskResponse>, DeleteTaskHandler>();
         }
     }
 }

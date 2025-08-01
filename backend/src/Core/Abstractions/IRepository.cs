@@ -5,9 +5,9 @@ namespace Core.Abstractions
     public interface IRepository<T> where T : class
     {
         Task<T> AddAsync(T t);
-        Task<T> GetAsync(Guid id);
+        Task<T> GetAsync(string id);
         Task<IEnumerable<T>> ListAsync(params Expression<Func<T, object>>[] includes);
-        Task RemoveAsync(Guid id);
+        Task RemoveAsync(string id);
         IEnumerable<T> Find(Expression<Func<T, bool>> predicate, params Expression<Func<T, object>>[] includes);
         Task<T> UpdateAsync(T t);
     }

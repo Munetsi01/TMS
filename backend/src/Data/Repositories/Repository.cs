@@ -20,7 +20,7 @@ namespace Data.Repositories
             return t;
         }
 
-        public virtual async Task<T> GetAsync(Guid id)
+        public virtual async Task<T> GetAsync(string id)
         {
             var result = await Context.Set<T>().FindAsync(id);
             if (result != null)
@@ -39,7 +39,7 @@ namespace Data.Repositories
             return await query.ToListAsync();
         }
 
-        public virtual async Task RemoveAsync(Guid id)
+        public virtual async Task RemoveAsync(string id)
         {
             var deletedEntity = await Context.Set<T>().FindAsync(id);
             if (deletedEntity != null)
