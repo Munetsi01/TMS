@@ -24,7 +24,7 @@ namespace Api.Validators
                  var result = _userRepository.Find(x=>x.Username == username).Any();
                  return !result;
                })
-              .WithMessage($"{nameof(RegisterUserRequest.Username)} already taken."); ;
+              .WithMessage($"{nameof(RegisterUserRequest.Username)} already taken.");
 
             RuleFor(m => m.Email)
                .Cascade(CascadeMode.Stop)
