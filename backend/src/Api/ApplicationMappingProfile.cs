@@ -31,8 +31,8 @@ namespace Api
                 .ForMember(dest => dest.Description, opt => opt.MapFrom(src => src.Description))
                 .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Status.ToString()))
                 .ForMember(dest => dest.Priority, opt => opt.MapFrom(src => src.Priority.ToString()))
-                .ForMember(dest => dest.AssigneeId, opt => opt.MapFrom(src => src.AssigneeId))
-                .ForMember(dest => dest.CreatorId, opt => opt.MapFrom(src => src.CreatorId))
+                .ForMember(dest => dest.Assignee, opt => opt.MapFrom(src => src.Assignee.Username))
+                .ForMember(dest => dest.Creator, opt => opt.MapFrom(src => src.Creator.Username))
                 .ForMember(dest => dest.CreatedAt, opt => opt.MapFrom(src => src.CreatedAt))
                 .ForMember(dest => dest.UpdatedAt, opt => opt.MapFrom(src => src.UpdatedAt));
         }

@@ -12,9 +12,9 @@
 
         public string Priority { get; set; }
 
-        public Guid AssigneeId { get; set; }
+        public string Assignee { get; set; }
 
-        public Guid CreatorId { get; set; }
+        public string Creator { get; set; }
 
         public DateTime CreatedAt { get; set; }
 

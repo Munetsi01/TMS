@@ -56,21 +56,21 @@ namespace Api.Handlers
 
             if(request.Status == -1 && request.AssigneeId == string.Empty)
             {
-               results = await _taskRepository.ListAsync();
+               results = await _taskRepository.ListAsync(y => y.Assignee, z => z.Creator);
             }
 
             else if (request.Status == -1 && request.AssigneeId != string.Empty)
             {
-               results = _taskRepository.Find(x => x.AssigneeId == request.AssigneeId);
+               results = _taskRepository.Find(x => x.AssigneeId == request.AssigneeId, y => y.Assignee, z => z.Creator);
             }
 
             else if (request.Status != -1 && request.AssigneeId == string.Empty)
             {
-                results = _taskRepository.Find(x => x.Status == (TaskStatusEnum)request.Status);
+                results = _taskRepository.Find(x => x.Status == (TaskStatusEnum)request.Status, y => y.Assignee, z => z.Creator);
             }
             else
             {
-               results =  _taskRepository.Find(x=>x.Status == (TaskStatusEnum)request.Status && x.AssigneeId == request.AssigneeId);
+               results =  _taskRepository.Find(x=>x.Status == (TaskStatusEnum)request.Status && x.AssigneeId == request.AssigneeId, y => y.Assignee, z => z.Creator);
 
             }
 
