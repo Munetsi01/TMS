@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Missing from './components/Missing';
 import Unauthorized from './components/Unauthorized';
 import RequireAuth from './components/RequireAuth';
+import Dashboard from './components/Dashboard';
 import {Route, Routes} from 'react-router-dom'
 
 function App() {
@@ -22,6 +23,7 @@ function App() {
         {/*protected routes*/}
         <Route element={<RequireAuth/>}>
         <Route path='/' element={<Home/>}/>
+        <Route path='/dashboard' element={<Dashboard/>}/>
         </Route>
 
           {/*catch all*/}

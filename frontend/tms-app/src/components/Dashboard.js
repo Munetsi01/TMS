@@ -1,8 +1,8 @@
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import AuthContext from "../context/AuthProvider";
 
-const Home = () => {
+const Dashboard = () => {
     const { setAuth } = useContext(AuthContext);
     const navigate = useNavigate();
 
@@ -17,11 +17,7 @@ const Home = () => {
         <section>
             <h1>Home</h1>
             <br />
-            <p>You are logged in!</p>
-            <br />
-            <Link to="/dashboard">Go to the Dashboard page</Link>
-            <br />
-            <Link to="/users">Go to the Users page</Link>
+            <p>Welcome To Dashboard</p>
             <div className="flexGrow">
                 <button onClick={logout}>Sign Out</button>
             </div>
@@ -29,4 +25,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default Dashboard
