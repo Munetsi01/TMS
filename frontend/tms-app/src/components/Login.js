@@ -1,6 +1,6 @@
 import {useRef, useState, useEffect} from 'react';
 import useAuth from '../hooks/setAuth';
-import {Link} from 'react-router-dom'
+import {Link, useNavigate, useLocation} from 'react-router-dom'
 import axios from '../api/axios';
 
 const LOGIN_URL = '/auth/login';
@@ -8,13 +8,17 @@ const LOGIN_URL = '/auth/login';
 const Login = () => {
 
     const {setAuth} = useAuth();
+
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
+
     const userRef = useRef();
     const errRef = useRef();
 
     const[user, setUser] = useState('');
     const[pwd, setPwd] = useState('');
     const[errMsg, setErrMsg] = useState('');
-    const[success, setSuccess] = useState(false);
 
     useEffect(()=> {
         userRef.current.focus();
@@ -41,7 +45,8 @@ const Login = () => {
 
      setUser('');
      setPwd('');
-     setSuccess(true);
+
+     navigate(from,{replace: true});
      }
      catch(err){
        if(!err?.response){
@@ -63,17 +68,7 @@ const Login = () => {
     }
 
     return(
-       <>
-       { success ? (
-        <section>
-            <h1>You are logged in!</h1>
-            <br/>
-            <p>
-                <Link to="/">Go to Home</Link>
-            </p>
-        </section>
-       ) : 
-       ( <section>
+      <section>
          <p ref={errRef} className={errMsg ?"errmsg":"offscreen"} aria-live="assertive">{errMsg}</p>
          <h1>Sign In</h1>
          <form onSubmit={handleSubmit}>
@@ -101,9 +96,7 @@ const Login = () => {
                     </span>
                 </p>
          </form>
-        </section>)
-        }
-       </>
+        </section>
     )
 }
 
