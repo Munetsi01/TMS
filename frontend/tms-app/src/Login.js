@@ -1,4 +1,5 @@
 import {useRef, useState, useEffect, useContext} from 'react';
+import {Link} from 'react-router-dom'
 import AuthContext from './context/AuthProvider';
 import axios from './api/axios';
 
@@ -47,7 +48,10 @@ const Login = () => {
         setErrMsg("No Server Response")
        }
        else if(err.response?.status === 400){
-        setErrMsg("Missing Username or Password")
+                setErrMsg(err?.response?.data?.message);
+       }
+        else if(err.response?.status === 401){
+                setErrMsg(err?.response?.data?.message);
        }
        else{
             console.log(err?.response?.data);
@@ -65,7 +69,7 @@ const Login = () => {
             <h1>You are logged in!</h1>
             <br/>
             <p>
-                <a href="#">Go to Home</a>
+                <Link to="home">Go to Home</Link>
             </p>
         </section>
        ) : 
@@ -93,8 +97,7 @@ const Login = () => {
                 <p>
                     Need an Account? <br/>
                     <span className="line">
-                        {/*put router link here*/}
-                        <a href="Register">Sign Up</a>
+                        <Link to="register">Sign Up</Link>
                     </span>
                 </p>
          </form>
