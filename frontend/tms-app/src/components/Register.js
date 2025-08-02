@@ -1,7 +1,7 @@
 import {useRef, useState, useEffect, useContext} from 'react';
 import {Link} from 'react-router-dom'
-import AuthContext from './context/AuthProvider';
-import axios from './api/axios';
+import AuthContext from '../context/AuthProvider';
+import axios from '../api/axios';
 //import {Link} from 'react-router-dom'
 
 const LOGIN_URL = '/auth/register';
@@ -37,7 +37,7 @@ const Register = () => {
 
      try{
           //validate
-          if (password != confirmPassword) {
+          if (password !== confirmPassword) {
             setErrMsg("Password and Confirm Password don't match");
             return;
         }
@@ -81,7 +81,7 @@ const Register = () => {
             <h1>You have successfully registered!</h1>
             <br/>
             <p>
-             <Link to="/">Login</Link>
+             <Link to="/login">Login</Link>
             </p>
         </section>
        ) : 
@@ -126,7 +126,7 @@ const Register = () => {
                 <p>
                     Have an Account? <br/>
                     <span className="line">
-                        <Link to="/">Login</Link>
+                        <Link to="/login">Login</Link>
                     </span>
                 </p>
          </form>

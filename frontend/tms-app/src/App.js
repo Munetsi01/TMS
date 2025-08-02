@@ -1,20 +1,33 @@
 import './App.css';
-import {BrowserRouter as Router, Route, Routes} from 'react-router-dom'
-import Login from './Login';
-import Register from './Register';
-import Home from './Home';
+import Layout from './components/Layout';
+import Login from './components/Login';
+import Register from './components/Register';
+import Home from './components/Home';
+import Missing from './components/Missing';
+import Unauthorized from './components/Unauthorized';
+import RequireAuth from './components/RequireAuth';
+import {Route, Routes} from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
-     <Router>
-      <Routes>
-        <Route path='/' element={<Login/>}/>
+     <Routes>
+
+      <Route path='/' element={<Layout />}>
+        {/*public routes*/}
         <Route path='/login' element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
-        <Route path='/home' element={<Home/>}/>
+        <Route path='/unauthorized' element={<Unauthorized/>}/>
+
+        {/*protected routes*/}
+        <Route element={<RequireAuth/>}>
+        <Route path='/' element={<Home/>}/>
+        </Route>
+
+          {/*catch all*/}
+        <Route path='*' element={<Missing/>}/>
+      </Route>
       </Routes>
-     </Router>
     </div>
   );
 }
